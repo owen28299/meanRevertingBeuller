@@ -4,10 +4,6 @@ var students = ["Stephen", "Tyler", "Owen", "Taylor", "Malia", "Laura", "Nat", "
 //Higher number = LESS mean reversion
 var degreeOfMeanReversion = 20;
 
-//Number of activities
-var times = 8;
-
-
 function meanRevertingBeuller(arr) {
   var people = arr;
 
