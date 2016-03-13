@@ -1,5 +1,13 @@
 var students = ["Stephen", "Tyler", "Owen", "Taylor", "Malia", "Laura", "Nat", "Pam"];
 
+//Change this to change the degree of mean reversion.
+//Higher number = LESS mean reversion
+var degreeOfMeanReversion = 20;
+
+//Number of activities
+var times = 8;
+
+
 function meanRevertingBeuller(arr) {
   var people = arr;
 
@@ -26,6 +34,7 @@ function meanRevertingBeuller(arr) {
     for (var x in peopleInstances){
 
       peopleInstances[x][1] = 10 *(mean - peopleInstances[x][0]);
+
       peopleInstances[x][2] = Math.random()*(20 + peopleInstances[x][1]);
 
     }
@@ -60,9 +69,8 @@ function meanRevertingBeuller(arr) {
 
 var classA = meanRevertingBeuller(students);
 
-
-console.log(classA.getPerson());
-
-
-console.log(classA.getPeopleInstances());
+document.getElementById("run").onclick = function(){
+  var picked = classA.getPerson();
+  document.getElementById("person").innerHTML = picked;
+};
 
