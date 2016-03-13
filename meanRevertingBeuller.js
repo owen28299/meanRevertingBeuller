@@ -42,8 +42,6 @@ function meanRevertingBeuller(arr) {
 
     peopleInstances[personChosen][0] += 1;
 
-    console.log(personChosen);
-
     return personChosen;
 
   }
@@ -62,9 +60,9 @@ function meanRevertingBeuller(arr) {
 
 var classA = meanRevertingBeuller(students);
 
-for (var x = 0; x < 8; x++) {
-  classA.getPerson();
-}
+
+console.log(classA.getPerson());
+
 
 console.log(classA.getPeopleInstances());
 
