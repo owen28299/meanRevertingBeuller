@@ -2,7 +2,7 @@ var students = ["Stephen", "Tyler", "Owen", "Taylor", "Malia", "Laura", "Nat", "
 
 //Change this to change the degree of mean reversion.
 //Higher number = LESS mean reversion
-var degreeOfMeanReversion = 20;
+var degreeOfMeanReversion = 0;
 
 function meanRevertingBeuller(arr) {
   var people = arr;
@@ -10,42 +10,44 @@ function meanRevertingBeuller(arr) {
   var peopleInstances = {};
 
   for (var i in people) {
-    peopleInstances[people[i]] = [0,0,0];
+    peopleInstances[people[i]] = {
+      currentScore : 0,
+      randomScore : 0
+    };
   }
 
-  function getMean(){
-
-    var sum = 0;
-    for (var i in peopleInstances){
-      sum += (peopleInstances[i][0]);
-    }
-    return sum / people.length;
-
-  }
+  var count = 0;
+  var mean = count / people.length;
 
   function getPerson(){
 
-    var mean = getMean();
+    mean = count / people.length;
 
     for (var x in peopleInstances){
 
-      peopleInstances[x][1] = 10 *(mean - peopleInstances[x][0]);
+      var deviation =  (count + 100) * (mean - peopleInstances[x].currentScore);
 
-      peopleInstances[x][2] = Math.random()*(20 + peopleInstances[x][1]);
+      peopleInstances[x].randomScore = Math.random()*(degreeOfMeanReversion + deviation);
 
     }
 
+    console.log(mean);
+
     var personChosen;
-    var highest = 0;
+    var highest = -Infinity;
 
     for (var p in peopleInstances) {
-      if(peopleInstances[p][2] > highest) {
-        highest = peopleInstances[p][2];
+      if(peopleInstances[p].randomScore > highest) {
+        highest = peopleInstances[p].randomScore;
         personChosen = p;
       }
     }
 
-    peopleInstances[personChosen][0] += 1;
+    peopleInstances[personChosen].currentScore += 1;
+
+    console.log("frog");
+    count++;
+    console.log(count);
 
     return personChosen;
 
@@ -57,16 +59,33 @@ function meanRevertingBeuller(arr) {
 
   return {
     getPerson: getPerson,
-    getPeopleInstances: getPeopleInstances,
-    getMean: getMean
+    getPeopleInstances: getPeopleInstances
   };
 
 }
 
 var classA = meanRevertingBeuller(students);
 
+var start = document.getElementById("start");
+
+for (var i in students){
+  var p = document.createElement('p');
+
+  var row = start.appendChild(p);
+
+  row.id = students[i];
+
+  document.getElementById(students[i]).innerHTML = students[i];
+
+}
+
+
 document.getElementById("run").onclick = function(){
   var picked = classA.getPerson();
   document.getElementById("person").innerHTML = picked;
+
+  var times = classA.getPeopleInstances()[picked].currentScore;
+  document.getElementById(picked).innerHTML =
+    picked + " " + times;
 };
 
