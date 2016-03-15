@@ -1,0 +1,23 @@
+{
+  "name": "mean-reverting-beuller",
+  "version": "1.0.0",
+  "description": "randomizer",
+  "main": "meanRevertingBeuller.js",
+  "scripts": {
+    "test": "NODE_ENV='TEST' node test/beuller.spec.js | ./node_modules/.bin/tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owen28299/meanRevertingBeuller.git"
+  },
+  "author": "Owen Yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/owen28299/meanRevertingBeuller/issues"
+  },
+  "homepage": "https://github.com/owen28299/meanRevertingBeuller#readme",
+  "dependencies": {
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1"
+  }
+}
