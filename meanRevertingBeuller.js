@@ -1,8 +1,16 @@
-var students = ["Stephen", "Tyler", "Owen", "Taylor", "Malia", "Laura", "Nat", "Pam"];
+var students;
+var classA;
+var degreeOfMeanReversion;
 
-//Change this to change the degree of mean reversion.
-//Higher number = LESS mean reversion
-var degreeOfMeanReversion = 0;
+
+var kids = studentList();
+
+document.getElementById('abc').addEventListener("keyup", function(event){
+  if(event.which === 13){
+    kids.setStudents(event.target.value);
+    event.target.value = "";
+  }
+});
 
 function meanRevertingBeuller(arr) {
   var people = arr;
@@ -17,7 +25,7 @@ function meanRevertingBeuller(arr) {
   }
 
   var count = 0;
-  var mean = count / people.length;
+  var mean = 0;
 
   function getPerson(){
 
@@ -25,13 +33,11 @@ function meanRevertingBeuller(arr) {
 
     for (var x in peopleInstances){
 
-      var deviation =  (count + 100) * (mean - peopleInstances[x].currentScore);
+      var deviation =  (0.01 * Math.random()) + mean - peopleInstances[x].currentScore;
 
       peopleInstances[x].randomScore = Math.random()*(degreeOfMeanReversion + deviation);
 
     }
-
-    console.log(mean);
 
     var personChosen;
     var highest = -Infinity;
@@ -45,9 +51,7 @@ function meanRevertingBeuller(arr) {
 
     peopleInstances[personChosen].currentScore += 1;
 
-    console.log("frog");
     count++;
-    console.log(count);
 
     return personChosen;
 
@@ -64,20 +68,63 @@ function meanRevertingBeuller(arr) {
 
 }
 
-var classA = meanRevertingBeuller(students);
+function studentList(){
+  var studentArray = [];
 
-var start = document.getElementById("start");
+  function getStudents(){
+    return studentArray;
+  }
 
-for (var i in students){
-  var p = document.createElement('p');
+  function setStudents(array){
+    var arr = array.split(",");
 
-  var row = start.appendChild(p);
+    for(var m in arr){
+      studentArray.push(arr[m]);
+    }
 
-  row.id = students[i];
+    console.log(studentArray);
 
-  document.getElementById(students[i]).innerHTML = students[i];
+  }
+
+  return{
+    getStudents : getStudents,
+    setStudents : setStudents
+  };
 
 }
+
+document.getElementById("commence").onclick = function(){
+  students = kids.getStudents();
+  classA = meanRevertingBeuller(students);
+
+  var start = document.getElementById("start");
+
+  for (var i in students){
+    var p = document.createElement('p');
+    var row = start.appendChild(p);
+    row.id = students[i];
+    document.getElementById(students[i]).innerHTML = students[i];
+  }
+
+  switch(document.getElementById('MR').value){
+    case "full":
+      degreeOfMeanReversion = 0;
+      break;
+    case "partial":
+      degreeOfMeanReversion = 5;
+      break;
+    case "random":
+      degreeOfMeanReversion = 10;
+      break;
+
+  }
+};
+
+
+
+//students = ["Stephen", "Tyler", "Owen", "Taylor", "Malia", "Laura", "Nat", "Pam"];
+//Change this to change the degree of mean reversion.
+//Higher number = LESS mean reversion
 
 
 document.getElementById("run").onclick = function(){
