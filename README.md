@@ -10,3 +10,18 @@ var degreeOfMeanReversion = number;
 //Higher number = LESS mean reversion
 
 Is run directly from browser through index.html
+
+
+## Testing
+
+install deps
+
+```
+npm install
+```
+
+run tests
+
+```
+npm test
+```
