@@ -1,7 +1,5 @@
 var students;
 var classA;
-var degreeOfMeanReversion;
-
 
 var kids = studentList();
 

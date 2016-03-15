@@ -1,3 +1,5 @@
+var degreeOfMeanReversion = 0;
+
 function meanRevertingBeuller(arr) {
   var people = arr;
 
@@ -67,9 +69,6 @@ function studentList(){
     for(var m in arr){
       studentArray.push(arr[m]);
     }
-
-    console.log(studentArray);
-
   }
 
   return{
