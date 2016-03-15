@@ -28,7 +28,7 @@ document.getElementById("commence").onclick = function(){
       degreeOfMeanReversion = 0;
       break;
     case "partial":
-      degreeOfMeanReversion = 5;
+      degreeOfMeanReversion = 2;
       break;
     case "random":
       degreeOfMeanReversion = 10;
@@ -53,3 +53,31 @@ document.getElementById("run").onclick = function(){
     picked + " " + times;
 };
 
+
+document.getElementById("DL").onclick = function(){
+  students = ["Stephen", "Tyler", "Owen", "Taylor", "Malia", "Laura", "Nat", "Pam"];
+  classA = meanRevertingBeuller(students);
+
+  var start = document.getElementById("start");
+
+  for (var i in students){
+    var p = document.createElement('p');
+    var row = start.appendChild(p);
+    row.id = students[i];
+    document.getElementById(students[i]).innerHTML = students[i];
+  }
+
+
+  switch(document.getElementById('MR').value){
+    case "full":
+      degreeOfMeanReversion = 0;
+      break;
+    case "partial":
+      degreeOfMeanReversion = 2;
+      break;
+    case "random":
+      degreeOfMeanReversion = 10;
+      break;
+
+  }
+};
