@@ -1,0 +1,19 @@
+{
+  "name": "mean-reverting-beuller",
+  "version": "1.0.0",
+  "description": "randomizer",
+  "main": "meanRevertingBeuller.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owen28299/meanRevertingBeuller.git"
+  },
+  "author": "Owen Yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/owen28299/meanRevertingBeuller/issues"
+  },
+  "homepage": "https://github.com/owen28299/meanRevertingBeuller#readme"
+}
